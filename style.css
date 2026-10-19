@@ -1,0 +1,181 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #282c34;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #3a3f4b;
+    color: #f1f1f1;
+}
+
+input[type="text"] {
+    width: 200px;
+}
+
+input[type="number"] {
+    width: 80px;
+}
+
+/* --- Tool and Button Groups --- */
+#tool-controls, #action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-left: 1px solid #444;
+}
+
+#tool-controls {
+    border-right: 1px solid #444;
+}
+
+#tool-controls .input-group {
+    padding-right: 15px;
+}
+
+input[type="range"] {
+    width: 120px;
+}
+
+button, .tool-btn {
+    padding: 10px 18px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4a90e2;
+    color: white;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover, .tool-btn:hover {
+    background-color: #357abd;
+}
+
+button:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+button:disabled:hover {
+    background-color: #555;
+}
+
+
+#start-reset {
+    background-color: #e24a4a;
+}
+
+#start-reset:hover {
+    background-color: #bd3535;
+}
+
+.tool-btn {
+    background-color: #555;
+}
+.tool-btn:hover {
+    background-color: #666;
+}
+
+.tool-btn.active {
+    background-color: #4a90e2;
+    box-shadow: 0 0 10px 2px #4a90e2a0;
+}
+
+/* --- End of Tool Styles --- */
+
+#canvas-container {
+    position: relative;
+    border: 2px solid #555;
+    line-height: 0;
+    width: 800px; 
+    height: 800px; 
+}
+
+/* Cursors for different tools */
+#canvas-container.paint-active {
+    cursor: crosshair;
+}
+#canvas-container.zoom-active {
+    cursor: cell;
+}
+
+#main-canvas,
+#foreground-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent; 
+}
+
+#main-canvas {
+    background-color: #000; 
+    z-index: 1; 
+}
+
+#foreground-canvas {
+    z-index: 2; 
+}
+
+#status-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    z-index: 3; 
+    transition: opacity 0.5s ease;
+}
+
+#status-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Style for the zoom selection rectangle */
+#zoom-rect {
+    position: absolute;
+    z-index: 10;
+    border: 2px dashed #ff0;
+    background-color: rgba(255, 255, 0, 0.2); 
+    pointer-events: none; 
+}
